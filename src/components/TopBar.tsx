@@ -10,26 +10,30 @@ export const TopBar: React.FC<TopBarProps> = ({ onOpenConsultation }) => {
     <div className="bg-[#243746] text-white text-xs border-b border-[#2d4557] relative z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
         <div className="flex flex-wrap items-center justify-between gap-y-2">
-          {/* Left: Contact Info */}
-          <div className="flex items-center space-x-6">
+          {/* Left: Contact Info & Address */}
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+            <span className="flex items-center gap-1.5 text-yellow-300 font-bold">
+              <span>📍 ایڈریس: میاں چنوں (Mian Channu)</span>
+            </span>
+            <span className="text-green-300 font-bold bg-[#1b2c38] px-2 py-0.5 rounded border border-green-500/30">
+              Mustahid Health Care Services
+            </span>
             <a 
-              href="tel:+9204235789000" 
-              className="flex items-center gap-1.5 text-gray-300 hover:text-[#B9EDF3] transition-colors"
+              href="tel:03007006133" 
+              className="flex items-center gap-1 text-white hover:text-[#B9EDF3] transition-colors font-medium"
             >
-              <Phone className="w-3.5 h-3.5 text-[#20B9D2]" />
-              <span className="font-mono tabular-nums">+92 (042) 3578-9000</span>
+              <Phone className="w-3.5 h-3.5 text-[#22c55e]" />
+              <span className="font-mono tabular-nums font-bold">0300 7006133</span>
             </a>
             <a 
-              href="mailto:care@healthylifemedicine.com" 
-              className="hidden sm:flex items-center gap-1.5 text-gray-300 hover:text-[#B9EDF3] transition-colors"
+              href="https://wa.me/923007006133?text=Salam%20Tariq%20Mehmood%20sahib,%20I%20want%20to%20order%20the%20medicine%20(Rs.%20500)" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-[#22c55e] hover:text-white transition-colors font-bold"
             >
-              <Mail className="w-3.5 h-3.5 text-[#20B9D2]" />
-              <span>care@healthylifemedicine.com</span>
+              <MessageSquare className="w-3.5 h-3.5 text-[#22c55e]" />
+              <span>WhatsApp: 0300 7006133</span>
             </a>
-            <div className="hidden md:flex items-center gap-1.5 text-gray-400">
-              <Clock className="w-3.5 h-3.5 text-gray-400" />
-              <span>Mon - Sat: 9:00 AM - 10:00 PM PKT</span>
-            </div>
           </div>
 
           {/* Right: Discreet Assurance & Pharmacist Help */}

@@ -67,11 +67,27 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="p-3.5 rounded-2xl bg-[#B9EDF3]/40 border border-[#20B9D2]/30 text-xs text-[#243746] flex items-center gap-2.5">
-                <ShieldCheck className="w-5 h-5 text-[#20B9D2] shrink-0" />
-                <span>
-                  Free, confidential medical consultation with registered clinical pharmacists. Female pharmacists available for sensitive women's health concerns.
-                </span>
+              <div className="p-3.5 rounded-2xl bg-[#B9EDF3]/40 border border-[#20B9D2]/30 text-xs text-[#243746] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-[#20B9D2] shrink-0" />
+                  <span>Free, confidential pharmacist consultation. Female & male staff available.</span>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <a
+                    href="tel:03007006133"
+                    className="font-bold font-mono text-[#243746] hover:text-[#20B9D2] underline text-xs"
+                  >
+                    📞 0300 7006133
+                  </a>
+                  <a
+                    href="https://wa.me/923007006133"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2 py-0.5 rounded-md bg-[#25D366] text-white font-bold text-[11px]"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
               </div>
 
               <div>
@@ -97,7 +113,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+92 300 0000000"
+                  placeholder="0300 7006133"
                   className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:outline-none focus:ring-2 focus:ring-[#20B9D2]"
                 />
               </div>

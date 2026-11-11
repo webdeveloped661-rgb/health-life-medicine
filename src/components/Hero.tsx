@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Search, ShieldAlert, Sparkles, Stethoscope, ArrowRight, BookOpen, CheckCircle2 } from 'lucide-react';
-import { ProductCategory } from '../types';
+import { Search, Stethoscope, ArrowRight, BookOpen, CheckCircle2, MessageSquare, Phone } from 'lucide-react';
 
 interface HeroProps {
   onSearch: (query: string, category: string) => void;
@@ -19,7 +18,6 @@ export const Hero: React.FC<HeroProps> = ({
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSearch(searchQuery, selectedCategory);
-    // Smooth scroll to featured medicine section
     const el = document.getElementById('featured-medicine');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
@@ -27,10 +25,10 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-[#B9EDF3]/40 via-[#F5F9FA] to-white pt-8 pb-16 lg:pt-14 lg:pb-24 border-b border-gray-100">
-      {/* Decorative Subtle Medical Background Patterns */}
+    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-[#DCFCE7]/60 via-[#F5F9FA] to-white pt-8 pb-16 lg:pt-12 lg:pb-20 border-b border-gray-100">
+      {/* Decorative Subtle Background */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-[#20B9D2] blur-3xl" />
+        <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-[#16a34a] blur-3xl" />
         <div className="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-[#B9EDF3] blur-3xl" />
       </div>
 
@@ -39,98 +37,111 @@ export const Hero: React.FC<HeroProps> = ({
           
           {/* Central & Left Healthcare Copy */}
           <div className="lg:col-span-7 flex flex-col text-left">
-            {/* Clinical Trust Badge */}
-            <div className="inline-flex items-center gap-2 self-start px-3.5 py-1.5 rounded-full bg-white/90 border border-[#20B9D2]/30 text-xs font-medium text-[#243746] shadow-xs mb-5">
-              <span className="w-2 h-2 rounded-full bg-[#20B9D2]" />
-              <span>Evidence-Based Reproductive & Hormonal Healthcare</span>
-              <span className="text-gray-300">|</span>
-              <span className="text-[#20B9D2] font-semibold">DRAP Standards Compliant</span>
+            {/* Owner & Address Badge */}
+            <div className="p-4 rounded-2xl bg-white border border-green-200 shadow-xs mb-5 space-y-1">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="text-[30px] font-bold text-[#16a34a] leading-tight">
+                  Tariq Mehmood (طارق محمود)
+                </span>
+                <span className="text-xs font-bold bg-green-100 text-green-800 px-3 py-1 rounded-full">
+                  Mustahid Health Care Services
+                </span>
+              </div>
+              <p className="text-sm font-semibold text-gray-700 flex items-center gap-1.5 pt-1">
+                <span className="text-red-500">📍 پتہ:</span>
+                <span>میاں چنوں (Mian Channu)</span>
+              </p>
             </div>
 
-            {/* Main Headings */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#243746] tracking-tight leading-[1.15] text-balance">
-              Your Health Deserves <span className="text-[#20B9D2]">Trusted Care</span>
-            </h1>
-            
-            <h2 className="mt-3 text-lg sm:text-xl font-semibold text-[#37474F] text-balance">
-              Specialized Healthcare Solutions for Women's & Men's Health
-            </h2>
+            {/* Special Highlight for Men's Body Pain */}
+            <div className="p-4 rounded-2xl bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-400 shadow-sm mb-4">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="px-2.5 py-0.5 rounded-md bg-[#16a34a] text-white text-xs font-bold">
+                  خاص فائدہ
+                </span>
+                <span className="text-xs font-bold text-green-900 uppercase">
+                  Clinically Proven For Men
+                </span>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 leading-snug">
+                یہ دوا مرد کے جسمانی درد، پٹھوں کے کھنچاؤ، جوڑوں اور کمر درد کے لیے بہت ہی بہترین اور لاجواب ہے!
+              </h3>
+              <p className="text-xs text-gray-600 mt-1">
+                جسم کی ہر قسم کی تھکن، اعصابی سستی اور کمزوری کو دور کر کے فوری توانائی اور سکون بخشتی ہے۔
+              </p>
+            </div>
 
-            <p className="mt-4 text-base sm:text-lg text-[#546E7A] leading-relaxed max-w-2xl">
-              Explore healthcare products and reliable health information focused on women's wellness, leukorrhea (white discharge) management, and men's health. Discover our product range and learn when professional medical advice is essential.
-            </p>
+            {/* Price Box with requested styles: red color, 22px, font-weight bold */}
+            <div className="flex items-baseline gap-3 mb-5 p-3 rounded-xl bg-white border border-gray-200">
+              <span className="text-xs text-gray-500 font-semibold">خصوصی قیمت:</span>
+              <span className="text-[22px] font-bold text-[#dc2626] font-mono">
+                صرف 500 روپے (PKR 500)
+              </span>
+              <span className="text-xs text-gray-400 line-through">1500 روپے</span>
+              <span className="text-xs font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">66% رعایت</span>
+            </div>
 
-            {/* Large Integrated Search Bar with Category Dropdown */}
+            {/* Search Bar */}
             <form 
               onSubmit={handleSearchSubmit}
-              className="mt-8 p-1.5 bg-white rounded-2xl shadow-md border border-[#20B9D2]/30 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 max-w-2xl"
+              className="p-1.5 bg-white rounded-2xl shadow-md border border-gray-200 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 max-w-2xl mb-6"
             >
-              <div className="flex-shrink-0 border-b sm:border-b-0 sm:border-r border-gray-200 px-3 py-2 sm:py-0">
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full bg-transparent text-xs font-semibold text-[#243746] focus:outline-none cursor-pointer py-1"
-                  aria-label="Filter search by category"
-                >
-                  <option value="all">All Categories</option>
-                  <option value="womens_health">Women's Health (Leukorrhea)</option>
-                  <option value="mens_health">Men's Health (Mardana Sehat)</option>
-                  <option value="reproductive">Reproductive Wellness</option>
-                </select>
-              </div>
-
               <div className="relative flex-grow flex items-center px-3">
                 <Search className="w-4 h-4 text-gray-400 absolute left-3" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search by ingredient, concern (e.g. Leukorrhea, Vitality), or product..."
+                  placeholder="دوا، جسمانی درد، یا اجزاء تلاش کریں..."
                   className="w-full pl-7 pr-3 py-2 text-sm text-[#263238] placeholder-gray-400 bg-transparent focus:outline-none"
                 />
               </div>
 
+              {/* Search button with requested green styling */}
               <button
                 type="submit"
-                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#20B9D2] hover:bg-[#199bb0] text-white text-sm font-semibold transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-[#20B9D2] shrink-0"
+                className="btn-green-custom bg-[#16a34a] hover:bg-[#15803d] text-white py-[12px] px-[20px] rounded-[10px] border-none text-[18px] font-bold shadow-sm"
               >
-                <span>Search</span>
+                <span>تلاش کریں</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </form>
 
-            {/* Two Main Call To Action Buttons */}
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <button
-                onClick={onExploreMedicine}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#20B9D2] hover:bg-[#199bb0] text-white font-semibold text-sm transition-all shadow-sm hover:shadow-md cursor-pointer"
+            {/* Main Action Buttons (User Styled: green, padding 12px 20px, rounded 10px, border none, font size 18px, font-weight bold) */}
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="https://wa.me/923007006133?text=Salam%20Tariq%20Mehmood%20sahib,%20I%20want%20to%20order%20Healthy%20Life%20Medicine%20for%20men%20body%20pain%20(Rs.%20500)"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-green-custom bg-[#16a34a] hover:bg-[#15803d] text-white py-[12px] px-[20px] rounded-[10px] border-none text-[18px] font-bold shadow-md inline-flex items-center gap-2"
               >
-                <Stethoscope className="w-4 h-4" />
-                <span>Explore Our Medicine</span>
-              </button>
+                <MessageSquare className="w-5 h-5" />
+                <span>واٹس ایپ پر آرڈر کریں (0300 7006133)</span>
+              </a>
 
               <button
-                onClick={onLearnHealth}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-[#F5F9FA] text-[#243746] font-semibold text-sm border border-gray-200 hover:border-[#20B9D2]/50 transition-all shadow-xs cursor-pointer"
+                type="button"
+                onClick={onExploreMedicine}
+                className="btn-green-custom bg-[#16a34a] hover:bg-[#15803d] text-white py-[12px] px-[20px] rounded-[10px] border-none text-[18px] font-bold shadow-md inline-flex items-center gap-2"
               >
-                <BookOpen className="w-4 h-4 text-[#20B9D2]" />
-                <span>Learn About Health</span>
+                <Stethoscope className="w-5 h-5" />
+                <span>دوا کی تفصیل دیکھیں</span>
               </button>
             </div>
 
             {/* Quick Trust Highlights */}
-            <div className="mt-8 pt-6 border-t border-gray-200/80 grid grid-cols-3 gap-4 text-left">
+            <div className="mt-8 pt-5 border-t border-gray-200 grid grid-cols-3 gap-3 text-left">
               <div>
-                <p className="text-xs font-bold text-[#243746]">100% Confidential</p>
-                <p className="text-[11px] text-gray-500 mt-0.5">Plain outer delivery parcel</p>
+                <p className="text-xs font-bold text-[#243746]">100% رازدارانہ پارسل</p>
+                <p className="text-[11px] text-gray-500 mt-0.5">سادہ گتے کی پیکنگ</p>
               </div>
               <div>
-                <p className="text-xs font-bold text-[#243746]">DRAP Standard</p>
-                <p className="text-[11px] text-gray-500 mt-0.5">Authorized formulations</p>
+                <p className="text-xs font-bold text-[#243746]">طارق محمود کی زیرِنگرانی</p>
+                <p className="text-[11px] text-gray-500 mt-0.5">میاں چنوں برانچ</p>
               </div>
               <div>
-                <p className="text-xs font-bold text-[#243746]">Clinical Review</p>
-                <p className="text-[11px] text-gray-500 mt-0.5">Pharmacist verification</p>
+                <p className="text-xs font-bold text-[#243746]">کیش آن ڈیلیوری</p>
+                <p className="text-[11px] text-gray-500 mt-0.5">پورے پاکستان میں</p>
               </div>
             </div>
 

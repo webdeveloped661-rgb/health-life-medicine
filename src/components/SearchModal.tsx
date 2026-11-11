@@ -23,7 +23,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   const [category, setCategory] = useState('all');
 
   const filtered = products.filter(p => {
-    const matchesCat = category === 'all' || p.category === category;
+    const matchesCat = category === 'all' || products.length === 1 || p.category === category;
     const matchesQ = !query || 
       p.name.toLowerCase().includes(query.toLowerCase()) ||
       p.genericName.toLowerCase().includes(query.toLowerCase()) ||

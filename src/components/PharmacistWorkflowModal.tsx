@@ -312,7 +312,7 @@ export const PharmacistWorkflowModal: React.FC<PharmacistWorkflowModalProps> = (
                         required
                         value={patientPhone}
                         onChange={(e) => setPatientPhone(e.target.value)}
-                        placeholder="e.g. +92 300 1234567"
+                        placeholder="e.g. 0300 7006133"
                         className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:outline-none focus:ring-2 focus:ring-[#20B9D2]"
                       />
                     </div>

@@ -7,7 +7,8 @@ import {
   Menu, 
   X,
   PhoneCall,
-  UserCheck
+  UserCheck,
+  MessageSquare
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -39,13 +40,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home', id: 'home' },
-    { name: 'About Us', href: '#about-us', id: 'about-us' },
-    { name: "Women's Health", href: '#womens-health', id: 'womens-health' },
-    { name: "Men's Health", href: '#mens-health', id: 'mens-health' },
-    { name: 'Our Medicine', href: '#featured-medicine', id: 'featured-medicine' },
-    { name: 'Health Information', href: '#health-blog', id: 'health-blog' },
-    { name: 'Contact Us', href: '#contact-us', id: 'contact-us' },
+    { name: 'دوا و قیمت (PKR 500)', href: '#product-spotlight', id: 'product-spotlight' },
+    { name: 'طبی فوائد و اثرات', href: '#product-details', id: 'product-details' },
+    { name: 'طارق محمود (میاں چنوں)', href: '#product-details', id: 'practitioner' },
+    { name: 'فوری آرڈر فارم', href: '#quick-order-form', id: 'quick-order-form' },
+    { name: 'رابطہ و واٹس ایپ', href: '#contact-us', id: 'contact-us' },
   ];
 
   const handleNavClick = (href: string) => {
@@ -61,23 +60,29 @@ export const Navbar: React.FC<NavbarProps> = ({
       isScrolled ? 'shadow-md border-b border-gray-100' : 'border-b border-gray-200'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 gap-4">
-          {/* Brand Logo */}
+        <div className="flex items-center justify-between h-24 gap-4">
+          {/* Brand Logo & Name: Tariq Mehmood in green 30px bold */}
           <a 
             href="#home" 
             onClick={(e) => { e.preventDefault(); handleNavClick('#home'); }}
-            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#20B9D2] rounded-lg"
+            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 rounded-lg"
           >
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#20B9D2] to-[#128a9e] flex items-center justify-center text-white shadow-sm shadow-[#20B9D2]/20 group-hover:scale-105 transition-transform">
-              <HeartHandshake className="w-6 h-6" />
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#16a34a] to-[#15803d] flex items-center justify-center text-white shadow-sm shadow-green-500/20 group-hover:scale-105 transition-transform shrink-0">
+              <HeartHandshake className="w-7 h-7" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-tight text-[#243746] leading-none">
-                Healthy Life
+              <span className="text-[30px] font-bold text-[#16a34a] leading-none tracking-tight">
+                Tariq Mehmood
               </span>
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#20B9D2] mt-0.5">
-                Medicine & Care
-              </span>
+              <div className="flex flex-wrap items-center gap-1.5 mt-1">
+                <span className="text-xs font-bold text-gray-900">Healthy Life Medicine</span>
+                <span className="text-gray-300">·</span>
+                <span className="text-xs font-semibold text-green-700 bg-green-50 px-1.5 py-0.5 rounded border border-green-200">
+                  Mustahid Health Care Services
+                </span>
+                <span className="text-gray-300">·</span>
+                <span className="text-xs font-bold text-gray-700">📍 میاں چنوں (Mian Channu)</span>
+              </div>
             </div>
           </a>
 
@@ -135,24 +140,26 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </button>
 
-            {/* Prescription Verification CTA */}
-            <button
-              type="button"
-              onClick={onOpenPrescriptionWorkflow}
-              className="hidden md:inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-[#243746] bg-[#B9EDF3]/60 hover:bg-[#B9EDF3] border border-[#20B9D2]/40 rounded-lg transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-[#20B9D2]"
+            {/* WhatsApp Direct Order Button (User Styled) */}
+            <a
+              href="https://wa.me/923007006133?text=Salam%20Tariq%20Mehmood%20sahib,%20I%20want%20to%20order%20the%20medicine%20(Rs.%20500)"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-green-custom hidden sm:inline-flex items-center gap-2 bg-[#16a34a] hover:bg-[#15803d] text-white py-[12px] px-[20px] rounded-[10px] border-none text-[18px] font-bold shadow-sm"
+              title="Chat on WhatsApp: 0300 7006133"
             >
-              <FileCheck2 className="w-4 h-4 text-[#20B9D2]" />
-              <span>Verify Prescription</span>
-            </button>
+              <MessageSquare className="w-5 h-5 text-white" />
+              <span>WhatsApp: 0300 7006133</span>
+            </a>
 
             {/* Pharmacist Consultation Button */}
             <button
               type="button"
               onClick={onOpenConsultation}
-              className="hidden lg:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-[#20B9D2] hover:bg-[#1aa4bb] rounded-lg transition-all shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-[#20B9D2]"
+              className="hidden lg:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-[#16a34a] hover:bg-[#15803d] rounded-[10px] border-none transition-all shadow-sm hover:shadow cursor-pointer"
             >
               <UserCheck className="w-4 h-4" />
-              <span>Consult Pharmacist</span>
+              <span>مشورہ / رہنمائی</span>
             </button>
 
             {/* Mobile Menu Hamburger */}
@@ -207,6 +214,23 @@ export const Navbar: React.FC<NavbarProps> = ({
               <PhoneCall className="w-4 h-4" />
               <span>Speak with a Clinical Pharmacist</span>
             </button>
+            <div className="grid grid-cols-2 gap-2 pt-1">
+              <a
+                href="tel:03007006133"
+                className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-bold text-[#243746] bg-gray-100 rounded-lg hover:bg-gray-200"
+              >
+                <PhoneCall className="w-3.5 h-3.5 text-[#20B9D2]" />
+                <span>0300 7006133</span>
+              </a>
+              <a
+                href="https://wa.me/923007006133"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-bold text-white bg-[#25D366] rounded-lg hover:bg-[#20bd5a]"
+              >
+                <span>WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
       )}

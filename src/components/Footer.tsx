@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HeartHandshake, Phone, Mail, MapPin, Clock, ShieldCheck, ExternalLink } from 'lucide-react';
+import { HeartHandshake, Phone, Mail, MapPin, Clock, ShieldCheck, ExternalLink, MessageSquare } from 'lucide-react';
 
 interface FooterProps {
   onNavClick: (href: string) => void;
@@ -47,27 +47,27 @@ export const Footer: React.FC<FooterProps> = ({
           
           {/* Column 1: Brand Info (col-span-4) */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#20B9D2] flex items-center justify-center text-white shadow-xs">
-                <HeartHandshake className="w-5 h-5" />
+            <div className="flex items-start gap-3">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#16a34a] to-[#15803d] flex items-center justify-center text-white shadow-xs shrink-0 mt-1">
+                <HeartHandshake className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-xl font-bold tracking-tight text-white leading-none">
-                  Healthy Life
+                <span className="text-[30px] font-bold text-[#16a34a] leading-tight block">
+                  Tariq Mehmood
                 </span>
-                <span className="block text-[11px] font-semibold uppercase tracking-wider text-[#B9EDF3]">
-                  Medicine & Care
+                <span className="block text-xs font-semibold text-gray-300">
+                  Healthy Life Medicine · Mustahid Health Care Services
                 </span>
               </div>
             </div>
 
-            <p className="text-xs text-gray-300 leading-relaxed pr-4">
-              A specialized healthcare platform dedicated to providing verified medicines, scientific awareness, and pharmacist consultations for women's reproductive health, leukorrhea (white discharge), and men's wellness.
+            <p className="text-xs text-gray-300 leading-relaxed pr-2">
+              یہ دوا مرد کے جسمانی درد، کمر درد، پٹھوں کے کھنچاؤ اور اعصابی کمزوری کے لیے انتہائی بہترین ہے۔ جسم میں فوری طاقت اور توانائی بحال کرتی ہے۔
             </p>
 
-            <div className="pt-2 flex items-center gap-2 text-xs text-[#A9D9B0]">
-              <ShieldCheck className="w-4 h-4 text-[#A9D9B0] shrink-0" />
-              <span>DRAP Standard Compliant · Registered Clinical Staff</span>
+            <div className="p-3 rounded-xl bg-[#2e4557] border border-green-500/30 text-xs text-green-300">
+              <p className="font-bold text-sm text-white">📍 مستقل پتہ:</p>
+              <p className="mt-0.5 font-bold text-white">میاں چنوں (Mian Channu)</p>
             </div>
           </div>
 
@@ -174,29 +174,37 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Column 4: Contact & Dispensing Info (col-span-3) */}
           <div className="lg:col-span-3 space-y-3 text-xs text-gray-300">
             <h4 className="text-sm font-bold text-white tracking-wider uppercase">
-              Contact & Support
+              Contact & Address
             </h4>
 
-            <div className="space-y-2.5">
+            <div className="space-y-3">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#20B9D2] shrink-0 mt-0.5" />
-                <span>Gulberg III Healthcare Plaza, Main Boulevard, Lahore, Pakistan</span>
+                <MapPin className="w-4 h-4 text-[#16a34a] shrink-0 mt-0.5" />
+                <span className="text-white font-bold">میاں چنوں (Mian Channu)</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#20B9D2] shrink-0" />
-                <a href="tel:+9204235789000" className="hover:text-[#20B9D2] font-mono tabular-nums">
-                  +92 (042) 3578-9000
+                <Phone className="w-4 h-4 text-[#16a34a] shrink-0" />
+                <a href="tel:03007006133" className="hover:text-green-400 font-mono tabular-nums font-bold text-white text-sm">
+                  0300 7006133
                 </a>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#20B9D2] shrink-0" />
-                <a href="mailto:care@healthylifemedicine.com" className="hover:text-[#20B9D2]">
-                  care@healthylifemedicine.com
+              
+              {/* WhatsApp Button Styled as requested */}
+              <div className="pt-2">
+                <a 
+                  href="https://wa.me/923007006133?text=Salam%20Tariq%20Mehmood%20sahib,%20I%20want%20to%20order%20Healthy%20Life%20Medicine%20for%20men%20body%20pain%20(Rs.%20500)" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn-green-custom bg-[#16a34a] hover:bg-[#15803d] text-white py-[12px] px-[20px] rounded-[10px] border-none text-[18px] font-bold shadow-md w-full inline-flex items-center justify-center gap-2"
+                >
+                  <MessageSquare className="w-5 h-5" />
+                  <span>WhatsApp: 0300 7006133</span>
                 </a>
               </div>
-              <div className="flex items-start gap-2.5">
-                <Clock className="w-4 h-4 text-[#20B9D2] shrink-0 mt-0.5" />
-                <span>Mon – Sat: 9:00 AM – 10:00 PM PKT<br/>Sunday: Emergency On-Call</span>
+
+              <div className="flex items-start gap-2.5 text-[11px] text-gray-400">
+                <Clock className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
+                <span>Mon – Sun: 9:00 AM – 10:00 PM PKT</span>
               </div>
             </div>
           </div>

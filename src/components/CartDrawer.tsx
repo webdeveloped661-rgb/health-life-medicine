@@ -9,7 +9,9 @@ import {
   CheckCircle2, 
   Truck, 
   FileCheck2,
-  Lock
+  Lock,
+  Phone,
+  MessageSquare
 } from 'lucide-react';
 
 interface CartDrawerProps {
@@ -203,20 +205,37 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       {deliveryFee === 0 ? <span className="text-[#16A34A]">FREE (Above PKR 3,000)</span> : `PKR ${deliveryFee}`}
                     </span>
                   </div>
-                  <div className="pt-2 border-t border-gray-100 flex justify-between text-sm font-extrabold text-[#243746]">
+                  <div className="pt-2 border-t border-gray-100 flex justify-between items-center text-sm font-extrabold text-[#243746]">
                     <span>Total Amount:</span>
-                    <span className="font-mono text-[#20B9D2]">PKR {total.toLocaleString()}</span>
+                    <span className="font-mono text-[22px] font-bold text-[#dc2626]">PKR {total.toLocaleString()}</span>
                   </div>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => setCheckoutStep('checkout')}
-                  className="w-full py-3 rounded-xl bg-[#20B9D2] hover:bg-[#189bb0] text-white text-xs font-bold shadow-md transition-colors flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Lock className="w-4 h-4" />
-                  <span>Proceed to Discreet Checkout</span>
-                </button>
+                <div className="space-y-3 pt-2">
+                  <a
+                    href="https://wa.me/923007006133?text=Salam%20Tariq%20Mehmood%20sahib,%20I%20want%20to%20place%20an%20order%20for%20Healthy%20Life%20Medicine%20(Rs.%20500)"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-green-custom bg-[#16a34a] hover:bg-[#15803d] text-white py-[12px] px-[20px] rounded-[10px] border-none text-[18px] font-bold shadow-md w-full inline-flex items-center justify-center gap-2"
+                  >
+                    <MessageSquare className="w-5 h-5" />
+                    <span>واٹس ایپ پر آرڈر کریں (0300 7006133)</span>
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={() => setCheckoutStep('checkout')}
+                    className="btn-green-custom bg-[#16a34a] hover:bg-[#15803d] text-white py-[12px] px-[20px] rounded-[10px] border-none text-[18px] font-bold shadow-md w-full inline-flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <Lock className="w-5 h-5" />
+                    <span>ڈسکریکٹ آن لائن چیک آؤٹ</span>
+                  </button>
+
+                  <p className="text-xs text-center text-gray-500 pt-1 flex items-center justify-center gap-1 font-medium">
+                    <Phone className="w-3.5 h-3.5 text-[#16a34a]" />
+                    <span>کال ہیلپ لائن: <a href="tel:03007006133" className="font-bold text-[#16a34a]">0300 7006133</a></span>
+                  </p>
+                </div>
               </div>
             )}
           </>
@@ -254,7 +273,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   required
                   value={customerPhone}
                   onChange={(e) => setCustomerPhone(e.target.value)}
-                  placeholder="+92 300 0000000"
+                  placeholder="e.g. 0300 7006133"
                   className="w-full px-3 py-2 rounded-xl border border-gray-300 text-xs focus:outline-none focus:ring-2 focus:ring-[#20B9D2]"
                 />
               </div>
@@ -269,6 +288,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     onChange={(e) => setCustomerCity(e.target.value)}
                     className="w-full px-3 py-2 rounded-xl border border-gray-300 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#20B9D2]"
                   >
+                    <option value="Mian Channu">Mian Channu (میاں چنوں)</option>
                     <option value="Lahore">Lahore</option>
                     <option value="Karachi">Karachi</option>
                     <option value="Islamabad">Islamabad</option>
@@ -287,7 +307,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   <select
                     value={paymentMethod}
                     onChange={(e) => setPaymentMethod(e.target.value as any)}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-300 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#20B9D2]"
+                    className="w-full px-3 py-2 rounded-xl border border-gray-300 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
                   >
                     <option value="COD">Cash on Delivery (COD)</option>
                     <option value="BankTransfer">Online Bank Transfer</option>
@@ -305,7 +325,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   value={customerAddress}
                   onChange={(e) => setCustomerAddress(e.target.value)}
                   placeholder="House / Apartment #, Street, Sector / Area"
-                  className="w-full px-3 py-2 rounded-xl border border-gray-300 text-xs focus:outline-none focus:ring-2 focus:ring-[#20B9D2]"
+                  className="w-full px-3 py-2 rounded-xl border border-gray-300 text-xs focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
               </div>
 
@@ -314,7 +334,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   type="checkbox"
                   checked={discreetPackaging}
                   onChange={(e) => setDiscreetPackaging(e.target.checked)}
-                  className="mt-0.5 text-[#20B9D2] rounded focus:ring-[#20B9D2]"
+                  className="mt-0.5 text-green-600 rounded focus:ring-green-500"
                 />
                 <span>
                   <strong>Strict Confidentiality:</strong> Keep parcel unbranded with neutral sender address (Highly recommended).
@@ -322,23 +342,23 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               </label>
             </div>
 
-            <div className="p-4 sm:p-5 border-t border-gray-100 bg-white space-y-2">
-              <div className="flex justify-between text-xs font-bold text-[#243746]">
+            <div className="p-4 sm:p-5 border-t border-gray-100 bg-white space-y-3">
+              <div className="flex justify-between items-center text-xs font-bold text-[#243746]">
                 <span>Total Due on Delivery:</span>
-                <span className="font-mono text-sm text-[#20B9D2]">PKR {total.toLocaleString()}</span>
+                <span className="font-mono text-[22px] font-bold text-[#dc2626]">PKR {total.toLocaleString()}</span>
               </div>
 
               <div className="flex gap-2">
                 <button
                   type="button"
                   onClick={() => setCheckoutStep('cart')}
-                  className="px-4 py-2.5 rounded-xl border border-gray-200 text-xs font-bold text-gray-600 hover:bg-gray-100"
+                  className="px-4 py-2.5 rounded-[10px] border border-gray-200 text-xs font-bold text-gray-600 hover:bg-gray-100"
                 >
                   Back
                 </button>
                 <button
                   type="submit"
-                  className="flex-grow py-2.5 rounded-xl bg-[#20B9D2] hover:bg-[#189bb0] text-white text-xs font-bold shadow-md transition-colors"
+                  className="btn-green-custom flex-grow bg-[#16a34a] hover:bg-[#15803d] text-white py-[12px] px-[20px] rounded-[10px] border-none text-[18px] font-bold shadow-md cursor-pointer transition-all"
                 >
                   Confirm & Place Order
                 </button>

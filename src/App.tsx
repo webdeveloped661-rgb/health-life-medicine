@@ -7,19 +7,12 @@ import React, { useState, useEffect } from 'react';
 import { MEDICINE_PRODUCTS } from './data/medicineData';
 import { HEALTH_ARTICLES } from './data/blogData';
 import { MedicineProduct, HealthArticle, CartItem } from './types';
+import { MessageSquare } from 'lucide-react';
 
 import { TopBar } from './components/TopBar';
 import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { ServiceFeatures } from './components/ServiceFeatures';
-import { PromoCards } from './components/PromoCards';
-import { WomensHealthSection } from './components/WomensHealthSection';
-import { MensHealthSection } from './components/MensHealthSection';
-import { FeaturedMedicine } from './components/FeaturedMedicine';
-import { WhyChooseUs } from './components/WhyChooseUs';
-import { AboutUs } from './components/AboutUs';
-import { HealthBlog } from './components/HealthBlog';
-import { Newsletter } from './components/Newsletter';
+import { TopProductSpotlight } from './components/TopProductSpotlight';
+import { ProductFullInformation } from './components/ProductFullInformation';
 import { MedicalDisclaimerBanner } from './components/MedicalDisclaimerBanner';
 import { Footer } from './components/Footer';
 
@@ -167,81 +160,20 @@ export default function App() {
       />
 
       <main className="flex-grow">
-        {/* 3. Hero Section with Search, Heading & Medical Composition */}
-        <Hero
-          onSearch={handleSearch}
-          onExploreMedicine={() => handleNavClick('#featured-medicine')}
-          onLearnHealth={() => handleNavClick('#womens-health')}
-        />
-
-        {/* 4. Healthcare Category Feature Blocks */}
-        <ServiceFeatures 
-          onSelectFeature={handleSelectFeature} 
-        />
-
-        {/* 5. Four Colorful Promotional Banners */}
-        <PromoCards 
-          onSelectPromo={handleSelectPromo} 
-        />
-
-        {/* 6. Women's Health Section — Leukorrhea (White Discharge) */}
-        <WomensHealthSection
-          onExploreProducts={() => {
-            setSelectedFilter('womens_health');
-            handleNavClick('#featured-medicine');
-          }}
-          onReadArticle={(articleId) => {
-            const article = HEALTH_ARTICLES.find(a => a.id === articleId) || HEALTH_ARTICLES[0];
-            setSelectedArticle(article);
-          }}
+        {/* 1. Sab se uper header k baad product spotlight */}
+        <TopProductSpotlight
+          product={MEDICINE_PRODUCTS[0]}
+          onAddToCart={handleAddToCart}
           onOpenConsultation={() => setIsConsultationModalOpen(true)}
         />
 
-        {/* 7. Men's Health Section — Mardana Sehat & Vitality */}
-        <MensHealthSection
-          onExploreProducts={() => {
-            setSelectedFilter('mens_health');
-            handleNavClick('#featured-medicine');
-          }}
-          onReadArticle={(articleId) => {
-            const article = HEALTH_ARTICLES.find(a => a.id === articleId) || HEALTH_ARTICLES[2];
-            setSelectedArticle(article);
-          }}
-          onOpenConsultation={() => setIsConsultationModalOpen(true)}
+        {/* 2. Aur os k nicha is ka saari information (Benefits, Dosage, Ingredients, Practitioner, Order Form, FAQs) */}
+        <ProductFullInformation
+          product={MEDICINE_PRODUCTS[0]}
+          onAddToCart={handleAddToCart}
         />
 
-        {/* 8. Featured Medicine Section (Product Grid with Filters) */}
-        <FeaturedMedicine
-          products={MEDICINE_PRODUCTS}
-          selectedFilter={selectedFilter}
-          onFilterChange={(filterId) => {
-            setSelectedFilter(filterId);
-            setSearchFilterQuery('');
-          }}
-          onSelectProduct={(product) => setSelectedProduct(product)}
-          onAddToCart={(product) => handleAddToCart(product)}
-          onOpenConsultation={() => setIsConsultationModalOpen(true)}
-          searchFilterQuery={searchFilterQuery}
-        />
-
-        {/* 9. Why Choose Us (Benefit Cards) */}
-        <WhyChooseUs />
-
-        {/* 10. About Us (Two-Column Commitment Layout) */}
-        <AboutUs
-          onOpenConsultation={() => setIsConsultationModalOpen(true)}
-          onExploreMedicine={() => handleNavClick('#featured-medicine')}
-        />
-
-        {/* 11. Health Knowledge & Blog */}
-        <HealthBlog
-          onSelectArticle={(article) => setSelectedArticle(article)}
-        />
-
-        {/* 12. Soft Aqua Newsletter */}
-        <Newsletter />
-
-        {/* 13. Regulatory Compliance & DRAP Medical Disclaimer */}
+        {/* 3. Regulatory Compliance & Natural Health Guidance */}
         <MedicalDisclaimerBanner />
       </main>
 
@@ -300,6 +232,27 @@ export default function App() {
         onSelectProduct={(p) => setSelectedProduct(p)}
         onSearchSubmit={handleSearch}
       />
+
+      {/* Persistent Floating WhatsApp Order Button (Styled as Requested) */}
+      <a
+        href="https://wa.me/923007006133?text=Salam%20Tariq%20Mehmood%20sahib,%20I%20want%20to%20order%20Healthy%20Life%20Medicine%20for%20men%20body%20pain%20(Rs.%20500)"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn-green-custom fixed bottom-6 right-6 z-50 bg-[#16a34a] hover:bg-[#15803d] text-white py-[12px] px-[20px] rounded-[10px] border-none text-[18px] font-bold shadow-2xl flex items-center gap-2 cursor-pointer transition-transform hover:scale-105"
+        style={{
+          backgroundColor: '#16a34a',
+          color: '#ffffff',
+          padding: '12px 20px',
+          borderRadius: '10px',
+          border: 'none',
+          fontSize: '18px',
+          fontWeight: 'bold'
+        }}
+        title="WhatsApp: 0300 7006133"
+      >
+        <MessageSquare className="w-6 h-6 text-white" />
+        <span>WhatsApp: 0300 7006133</span>
+      </a>
     </div>
   );
 }

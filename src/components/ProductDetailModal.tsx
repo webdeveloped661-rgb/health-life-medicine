@@ -10,7 +10,9 @@ import {
   Check, 
   Info,
   Package,
-  FileCheck2
+  FileCheck2,
+  Phone,
+  MessageSquare
 } from 'lucide-react';
 
 interface ProductDetailModalProps {
@@ -111,49 +113,54 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   {product.categoryLabel}
                 </p>
 
-                <h2 className="text-2xl font-bold text-[#243746] mt-1">
-                  {product.name}
-                </h2>
-                {product.urduName && (
-                  <p className="text-sm font-medium text-gray-500 mt-0.5">
-                    {product.urduName}
-                  </p>
-                )}
+                {/* Tariq Mehmood Name in Green 30px Bold */}
+                <div className="border-b border-gray-100 pb-2 mb-2">
+                  <h2 className="text-[30px] font-bold text-[#16a34a] leading-tight">
+                    Tariq Mehmood (طارق محمود)
+                  </h2>
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <span className="text-[11px] font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded">
+                      Mustahid Health Care Services
+                    </span>
+                    <span className="text-xs text-gray-700 font-bold">
+                      📍 میاں چنوں (Mian Channu)
+                    </span>
+                  </div>
+                </div>
 
-                <p className="text-xs font-mono text-gray-600 mt-2 bg-gray-100/70 p-2 rounded-lg border border-gray-200">
-                  <strong>Active Molecule / Extracts:</strong> {product.genericName}
+                <h3 className="text-xl font-bold text-[#243746] mt-1">
+                  {product.name}
+                </h3>
+
+                {/* Highlight for Men's Body Pain */}
+                <div className="my-3 p-3 rounded-xl bg-green-50 border border-green-300">
+                  <p className="text-sm font-bold text-green-900 flex items-center gap-1.5">
+                    <Check className="w-4 h-4 text-[#16a34a] shrink-0" />
+                    <span>یہ دوا مرد کے جسمانی درد، پٹھوں کے کھنچاؤ، جوڑوں اور کمر درد کے لیے بہت ہی بہترین ہے!</span>
+                  </p>
+                </div>
+
+                <p className="text-xs font-mono text-gray-600 bg-gray-100/70 p-2 rounded-lg border border-gray-200">
+                  <strong>Active Formula:</strong> {product.genericName}
                 </p>
 
-                <p className="text-sm text-[#546E7A] mt-4 leading-relaxed">
+                <p className="text-sm text-[#546E7A] mt-3 leading-relaxed">
                   {product.fullDescription}
                 </p>
 
-                {/* Price Display */}
-                <div className="mt-5 flex items-baseline gap-3">
-                  <span className="text-3xl font-extrabold text-[#243746] font-mono tabular-nums">
-                    {product.currency} {product.price.toLocaleString()}
+                {/* Price Display with user style: red, 22px, font-weight bold */}
+                <div className="mt-4 p-3 rounded-xl bg-red-50/60 border border-red-200 flex items-baseline gap-3">
+                  <span className="text-[22px] font-bold text-[#dc2626] font-mono tabular-nums">
+                    {product.currency} {product.price} (صرف 500 روپے)
                   </span>
-                  <span className="text-xs text-gray-400">
-                    (Standard Retail Price / Inclusive of Taxes)
-                  </span>
+                  <span className="text-xs text-gray-400 line-through">1,500 روپے</span>
+                  <span className="text-xs font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">66% رعایت</span>
                 </div>
-
-                {product.prescriptionRequired && (
-                  <div className="mt-4 p-3 rounded-xl bg-[#FEF2F2] border border-[#FCA5A5] text-xs text-[#991B1B] flex items-start gap-2.5">
-                    <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-bold">Prescription Medicine Notice:</p>
-                      <p className="mt-0.5">
-                        This pharmaceutical item strictly requires prescription verification by our clinical pharmacist before dispatch in compliance with DRAP regulations.
-                      </p>
-                    </div>
-                  </div>
-                )}
               </div>
 
-              {/* Quantity Selector & Action Buttons */}
-              <div className="mt-6 pt-5 border-t border-gray-100 flex flex-wrap items-center gap-4">
-                <div className="flex items-center border border-gray-300 rounded-xl overflow-hidden bg-white">
+              {/* Quantity Selector & Action Buttons with user style */}
+              <div className="mt-5 pt-4 border-t border-gray-100 flex flex-wrap items-center gap-3">
+                <div className="flex items-center border border-gray-300 rounded-[10px] overflow-hidden bg-white">
                   <button
                     type="button"
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -173,33 +180,27 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   </button>
                 </div>
 
+                <a
+                  href={`https://wa.me/923007006133?text=Salam%20Tariq%20Mehmood%20sahib,%20I%20want%20to%20order%20${encodeURIComponent(product.name)}%20(Qty:%20${quantity},%20Price:%20PKR%20${product.price * quantity})`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-green-custom bg-[#16a34a] hover:bg-[#15803d] text-white py-[12px] px-[20px] rounded-[10px] border-none text-[18px] font-bold shadow-md inline-flex items-center justify-center gap-2"
+                >
+                  <MessageSquare className="w-5 h-5" />
+                  <span>WhatsApp: 0300 7006133</span>
+                </a>
+
                 <button
                   type="button"
                   onClick={() => {
                     onAddToCart(product, quantity);
                     onClose();
                   }}
-                  className="flex-grow inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#20B9D2] hover:bg-[#189bb0] text-white font-bold text-sm shadow-sm transition-all"
+                  className="btn-green-custom bg-[#16a34a] hover:bg-[#15803d] text-white py-[12px] px-[20px] rounded-[10px] border-none text-[18px] font-bold shadow-md inline-flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <ShoppingBag className="w-4 h-4" />
-                  <span>
-                    {product.prescriptionRequired ? 'Add & Upload Prescription' : 'Add to Medicine Bag'}
-                  </span>
+                  <ShoppingBag className="w-5 h-5" />
+                  <span>آن لائن آرڈر کریں</span>
                 </button>
-
-                {product.prescriptionRequired && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      onClose();
-                      onOpenPrescriptionWorkflow();
-                    }}
-                    className="inline-flex items-center gap-1.5 px-4 py-3 rounded-xl bg-[#B9EDF3] hover:bg-[#a0e4ed] text-[#243746] font-bold text-xs transition-all"
-                  >
-                    <FileCheck2 className="w-4 h-4 text-[#20B9D2]" />
-                    <span>Upload Prescription Directly</span>
-                  </button>
-                )}
               </div>
 
             </div>

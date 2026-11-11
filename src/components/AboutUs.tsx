@@ -95,21 +95,24 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onOpenConsultation, onExploreM
               </div>
             </div>
 
-            {/* CTAs */}
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <button
-                onClick={onOpenConsultation}
-                className="px-6 py-3 rounded-xl bg-[#20B9D2] hover:bg-[#189bb0] text-white text-xs font-bold shadow-xs transition-colors flex items-center gap-1.5"
+            {/* CTAs with User button styling */}
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="https://wa.me/923007006133?text=Salam%20Tariq%20Mehmood%20sahib,%20I%20want%20to%20order%20Healthy%20Life%20Medicine%20for%20men%20body%20pain%20(Rs.%20500)"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-green-custom bg-[#16a34a] hover:bg-[#15803d] text-white py-[12px] px-[20px] rounded-[10px] border-none text-[18px] font-bold shadow-md inline-flex items-center gap-2"
               >
-                <span>Consult Our Medical Team</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+                <span>واٹس ایپ رابطہ: 0300 7006133</span>
+              </a>
 
               <button
+                type="button"
                 onClick={onExploreMedicine}
-                className="px-6 py-3 rounded-xl bg-white hover:bg-gray-100 text-[#243746] text-xs font-bold border border-gray-200 transition-colors"
+                className="btn-green-custom bg-[#16a34a] hover:bg-[#15803d] text-white py-[12px] px-[20px] rounded-[10px] border-none text-[18px] font-bold shadow-md inline-flex items-center gap-2 cursor-pointer"
               >
-                Explore Formulations
+                <span>دوا کی تفصیل (500 روپے)</span>
+                <ArrowRight className="w-5 h-5" />
               </button>
             </div>
 

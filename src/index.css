@@ -24,5 +24,28 @@
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #20B9D2;
+  background: #16a34a;
 }
+
+/* User specified button styles */
+.btn-green-custom {
+  background-color: #16a34a !important;
+  color: #ffffff !important;
+  padding: 12px 20px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+}
+.btn-green-custom:hover {
+  background-color: #15803d !important;
+  transform: translateY(-1px);
+}
+
