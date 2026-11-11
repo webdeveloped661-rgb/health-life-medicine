@@ -1,0 +1,8 @@
+{
+  "name": "healthy life medicine ",
+  "description": "Specialized healthcare solutions and medical guidance for women\u0027s reproductive health, leukorrhea (white discharge), and men\u0027s wellness.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
